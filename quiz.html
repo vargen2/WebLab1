@@ -11,12 +11,9 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
     <main>
         <section>
-            <progress class="card" id="progressBar" value="4" max="10">
+            <progress class="card" id="progressBar" value="0" max="10">
             </progress>
             <div id="progress" class="centered">
                 progress
@@ -28,17 +25,22 @@
             </div>
         </section>
         <section>
-            <button id="button1" class="formElement" onclick="answerFunc(0)">Answer 1</button>
-            <button id="button2" class="formElement" onclick="answerFunc(1)">Answer 2</button>
-            <button id="button3" class="formElement" onclick="answerFunc(2)">Answer 3</button>
-            <button id="button4" class="formElement" onclick="answerFunc(3)">Answer 4</button>
-            </section4 <div id="Response">
-
+            <div class="choiceButtons">
+                <button id="button1" class="formElement" onclick="answerFunc(0)">Answer 1</button>
+                <button id="button2" class="formElement" onclick="answerFunc(1)">Answer 2</button>
+                <button id="button3" class="formElement" onclick="answerFunc(2)">Answer 3</button>
+                <button id="button4" class="formElement" onclick="answerFunc(3)">Answer 4</button>
             </div>
+        </section>
+        <section>
+            <div id="response">
+                &nbsp;
+            </div>
+        </section>
     </main>
     <nav>
-        <a href="index.html" class="navItem">New Quiz</button>
-        <a href="quiz.html" class="navItem" >Restart Same</button>
+        <a href="index.html" title="Start over with new type of quiz" class="navItem">New Quiz</a>
+        <a class="navItem" title="Restart Same Quiz" href="#" onclick="restartSame();return false;">Restart Same</a>
     </nav>
 
 </body>

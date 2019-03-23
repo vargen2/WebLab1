@@ -4,34 +4,52 @@ var answers
 var correct = 0
 var current = 0
 
-function shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
+
+async function createApiUrl(url) {
+    let number = url.searchParams.get('n')
+    number = Math.max(1, Math.min((number) ? number : 10, 50))
+
+    let category = url.searchParams.get('c')
+    category = ''
+
+    let difficulty = url.searchParams.get('d')
+    difficulty = (difficulty) ? difficulty : ''
+
+    return 'https://opentdb.com/api.php?amount=' + number + '&type=multiple&category=' + category + '&difficulty=' + difficulty
 }
 
 async function loader() {
-    //var url = 'https://opentdb.com/api.php?amount=10&type=multiple'
-    const res = await fetch(url)
+    const apiUrl = await createApiUrl(new URL(window.location.href))
+    const res = await fetch(apiUrl)
     const json = await res.json()
     return json.results
 }
 
 function endQuiz() {
-    document.getElementById('progress').innerHTML = 'Quiz completed. ' + correct + 'p/10p'
-    document.getElementById('question').innerHTML = ''
-    document.getElementById('choices').innerHTML = ''
+    document.getElementById('progressBar').value =questions.length
+    document.getElementById('progress').innerHTML = 'Quiz completed'
+    document.getElementById('question').innerHTML = correct + ' correct answers out of ' + questions.length
+    document.getElementById('button1').style.display = 'none'
+    document.getElementById('button2').style.display = 'none'
+    document.getElementById('button3').style.display = 'none'
+    document.getElementById('button4').style.display = 'none'
 }
 
 function setQuestion(question) {
     currentQuestion = question
-    document.getElementById('progressBar').value=current
-    document.getElementById('question').innerHTML = question.question
-    document.getElementById('progress').innerHTML = 'Question: ' + current + ' / 10'
-    answers = question.incorrect_answers
-    answers.push(question.correct_answer)
-    shuffle(answers)
+    document.getElementById('progressBar').value = current
+    document.getElementById('progressBar').max = questions.length
+    document.getElementById('question').innerHTML = currentQuestion.question
+    document.getElementById('progress').innerHTML = 'Question: ' + current + ' / ' + questions.length
+    
+    answers = currentQuestion.incorrect_answers.slice()
+    //answers.push(currentQuestion.correct_answer)
+    //shuffle(answers)
+    answers.splice(Math.floor(Math.random() * 4),0,currentQuestion.correct_answer)
+    console.log('answers '+answers);
+    console.log('answers.length '+answers.length);
+    console.log('current '+current)
+    console.log('correct '+correct)
 
     document.getElementById('button1').innerText = answers[0]
     document.getElementById('button2').innerText = answers[1]
@@ -45,19 +63,30 @@ function answerFunc(nr) {
     if (answer === correct_answer) {
         correct++
         document.getElementById('response').innerHTML = 'Correct!'
-    }else {
+    } else {
         document.getElementById('response').innerHTML = 'Wrong!'
     }
     current++
-    if (current < 10)
+    if (current < questions.length)
         setQuestion(questions[current])
     else
         endQuiz()
 }
 
+function restartSame() {
+    document.getElementById('button1').style.display = 'inline-block'
+    document.getElementById('button2').style.display = 'inline-block'
+    document.getElementById('button3').style.display = 'inline-block'
+    document.getElementById('button4').style.display = 'inline-block'
+    current=0
+    correct=0
+    
+    setQuestion(questions[current])
+}
 
 window.addEventListener('load', () => {
     loader().then(r => {
+        console.log('hit')
         questions = r
         setQuestion(questions[current])
     })

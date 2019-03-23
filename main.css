@@ -19,6 +19,7 @@ progress {
     -webkit-appearance: none;
     appearance: none;
     color: #fff;
+    margin-block-start: 1em;
     margin-block-end: 1em;
 }
 
@@ -94,7 +95,14 @@ nav:first-of-type a {
     /* padding: 4px 4px; */
 }
 
+.choiceButtons {
+    height: 13em;
+}
+
 @media only screen and (max-width: 600px) {
+    body {
+        margin: auto 8px;
+    }
     .formElement {
         margin-block-end: 1.2em;
         width: 100%;

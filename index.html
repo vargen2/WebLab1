@@ -7,7 +7,6 @@
     <title>Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
 </head>
 
 <body>
@@ -15,13 +14,13 @@
         <section>
             <h2>Select Quiz</h2>
         </section>
-        <section>
-            <form>
+        <section >
+            <form action="/quiz.html" style="margin: auto;">
                 <label for="number">Number of questions</label>
-                <input id="number" name="number" type="number" value="10" max="100" min="1" class="startFormElement card">
+                <input id="number" name="n" type="number" value="10" max="50" min="1" class="startFormElement card">
 
                 <label for="category">Category</label>
-                <select id="category" name="category" class="startFormElement card">
+                <select id="category" name="c" class="startFormElement card">
                     <option value="random">Random</option>
                     <option value="easy">Music</option>
                     <option value="medium">cat 2</option>
@@ -29,8 +28,8 @@
                 </select>
 
                 <label for="difficulty">Difficulty</label>
-                <select id="difficulty" name="difficulty" class="startFormElement card">
-                    <option value="random">Random</option>
+                <select id="difficulty" name="d" class="startFormElement card">
+                    <option value="">Random</option>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
