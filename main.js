@@ -12,7 +12,7 @@ function shuffle(a) {
 }
 
 async function loader() {
-    var url = 'https://opentdb.com/api.php?amount=10&type=multiple'
+    //var url = 'https://opentdb.com/api.php?amount=10&type=multiple'
     const res = await fetch(url)
     const json = await res.json()
     return json.results

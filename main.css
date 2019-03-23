@@ -1,20 +1,15 @@
+* {
+    font-size: 20px;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(80, 85, 80);
     color: rgb(204, 204, 204);
 }
 
-
-
 section {
     margin-block-end: 1em;
-}
-
-.formElement {
-    margin-block-end: 1em;
-    margin-right: 1em;
-    width: 80%;
-    min-width: 600px;
 }
 
 progress {
@@ -35,27 +30,9 @@ progress::-webkit-progress-value {
     background-color: rgb(139, 55, 196);
 }
 
-#question {
-    height: 4em;
-}
-
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-@media only screen and (max-width: 600px) {
-    .formElement {
-        margin-block-end: 1em;
-        margin-right: 1em;
-        width: 100%;
-        max-width: 600px;
-    }
-}
-
 button {
     display: inline-block;
     padding: 8px 16px;
-    font-size: 1em;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -73,4 +50,55 @@ button:hover {
 
 button:active {
     transform: translateY(4px);
+}
+
+nav {
+    margin-block-start: 2em;
+    margin-block-end: 1em;
+    height: 2em;
+}
+
+#question {
+    height: 4em;
+}
+
+nav:first-of-type a {
+    margin-right: 3em;
+    margin-bottom: 1em;
+}
+
+.navItem {
+    width: 150px;
+    color: rgb(204, 204, 204);
+}
+
+.navItem:hover {
+    color: #fff;
+}
+
+.centered {
+    text-align: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (max-width: 600px) {
+    .formElement {
+        margin-block-end: 1.2em;
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    body {
+        width: 600px;
+        margin: auto;
+    }
+    .formElement {
+        margin-block-end: 1.2em;
+        width: 600px;
+    }
 }
