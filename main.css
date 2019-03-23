@@ -84,6 +84,16 @@ nav:first-of-type a {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.startFormElement {
+    display: block;
+    margin-block-end: 1em;
+    width: 300px;
+    background-color: rgb(139, 55, 196);
+    color: rgb(204, 204, 204);
+    border: solid 2px rgb(139, 55, 196);
+    /* padding: 4px 4px; */
+}
+
 @media only screen and (max-width: 600px) {
     .formElement {
         margin-block-end: 1.2em;

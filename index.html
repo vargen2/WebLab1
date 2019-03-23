@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="main.js"></script>
 </head>
+
 <body>
-    
+    <main>
+        <section>
+            <h2>Select Quiz</h2>
+        </section>
+        <section>
+            <form>
+                <label for="number">Number of questions</label>
+                <input id="number" name="number" type="number" value="10" max="100" min="1" class="startFormElement card">
+
+                <label for="category">Category</label>
+                <select id="category" name="category" class="startFormElement card">
+                    <option value="random">Random</option>
+                    <option value="easy">Music</option>
+                    <option value="medium">cat 2</option>
+                    <option value="hard">cat 3</option>
+                </select>
+
+                <label for="difficulty">Difficulty</label>
+                <select id="difficulty" name="difficulty" class="startFormElement card">
+                    <option value="random">Random</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <input type="submit" value="Start Quiz" class="startFormElement card">
+            </form>
+        </section>
+
+    </main>
 </body>
+
 </html>
