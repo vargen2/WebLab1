@@ -15,28 +15,29 @@
         <section>
             <progress class="card" id="progressBar" value="0" max="10">
             </progress>
-            <div id="progress" class="centered">
-                progress
+            <div class="response">
+                <div id="progress">
+                    Question: ...
+                </div>
+                <div id="response">
+                    &nbsp;
+                </div>
             </div>
         </section>
         <section>
             <div id="question">
-                Question
+                ...
             </div>
         </section>
         <section>
             <div class="choiceButtons">
-                <button id="button1" class="formElement" onclick="answerFunc(0)">Answer 1</button>
-                <button id="button2" class="formElement" onclick="answerFunc(1)">Answer 2</button>
-                <button id="button3" class="formElement" onclick="answerFunc(2)">Answer 3</button>
-                <button id="button4" class="formElement" onclick="answerFunc(3)">Answer 4</button>
+                <button id="button1" class="formElement button" onclick="answerFunc(0)"></button>
+                <button id="button2" class="formElement  button" onclick="answerFunc(1)"></button>
+                <button id="button3" class="formElement  button" onclick="answerFunc(2)"></button>
+                <button id="button4" class="formElement  button" onclick="answerFunc(3)"></button>
             </div>
         </section>
-        <section>
-            <div id="response">
-                &nbsp;
-            </div>
-        </section>
+
     </main>
     <nav>
         <a href="index.html" title="Start over with new type of quiz" class="navItem">New Quiz</a>

@@ -8,68 +8,98 @@ body {
     color: rgb(204, 204, 204);
 }
 
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
 section {
-    margin-block-end: 1em;
+    margin-bottom: 1em;
 }
 
 progress {
     width: 100%;
-    max-width: 600px;
-    height: 2em;
-    -webkit-appearance: none;
-    appearance: none;
+    height: 32px;
+    border-radius: 2px;
     color: #fff;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
+    margin-top: 8px;
+    margin-bottom: 0.5em;
+    background-color: rgb(204, 204, 204);
+    border: none;
 }
 
 progress::-webkit-progress-bar {
+    border-radius: 2px;
     background-color: rgb(204, 204, 204);
 }
 
 progress::-webkit-progress-value {
+    border-radius: 2px;
     background-color: rgb(139, 55, 196);
+    transition: width 0.2s;
 }
 
-button {
+
+/* progress::-moz-progress-bar {
+    background-color: blue;
+} */
+
+progress::-ms-fill {
+    border-radius: 2px;
+    background-color: rgb(139, 55, 196);
+    border: none;
+}
+
+.button {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 4px 8px;
+    width: 100%;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     outline: none;
+    border-radius: 2px;
     color: rgb(204, 204, 204);
     background-color: rgb(139, 55, 196);
-    border: solid 2px rgb(139, 55, 196);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-width: 0px;
+    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2), 0px 6px 16px 0 rgba(0, 0, 0, 0.19);
+    transition: transform, box-shadow, background-color 0.4s ease-in-out 0s;
 }
 
-button:hover {
-    border: solid 2px rgb(204, 204, 204);
-    color: #fff;
+.button:hover {
+    background-color: rgb(51, 121, 202);
 }
 
-button:active {
+.button:active {
     transform: translateY(4px);
+    box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.2), 0px 2px 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.button:empty,.button:empty:active {
+    box-shadow: none;
+    background-color: gray;
+    height: 31.2px;
+    transform: translateY(0px);
 }
 
 nav {
-    margin-block-start: 2em;
-    margin-block-end: 1em;
+    margin-top: 0em;
+    margin-bottom: 1em;
     height: 2em;
+    display: flex;
+    justify-content: space-between
 }
 
 #question {
-    height: 4em;
-}
-
-nav:first-of-type a {
-    margin-right: 3em;
-    margin-bottom: 1em;
+    min-height: 5em;
+    
 }
 
 .navItem {
-    width: 150px;
     color: rgb(204, 204, 204);
 }
 
@@ -82,41 +112,43 @@ nav:first-of-type a {
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 16px 0 rgba(0, 0, 0, 0.19);
 }
 
 .startFormElement {
     display: block;
-    margin-block-end: 1em;
-    width: 300px;
-    background-color: rgb(139, 55, 196);
-    color: rgb(204, 204, 204);
-    border: solid 2px rgb(139, 55, 196);
-    /* padding: 4px 4px; */
+    padding: 4px 8px;
+    border-radius: 2px;
+    margin-bottom: 2em;
+    width: 100%;
+    background-color: rgb(204, 204, 204);
+    color: rgb(80, 85, 80);
+    border-width: 0px;
+}
+
+.formElement {
+    margin-bottom: 1.2em;
+    width: 100%;
 }
 
 .choiceButtons {
     height: 13em;
 }
 
-@media only screen and (max-width: 600px) {
+.response {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 500px) {
     body {
         margin: auto 8px;
     }
-    .formElement {
-        margin-block-end: 1.2em;
-        width: 100%;
-        max-width: 600px;
-    }
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 501px) {
     body {
-        width: 600px;
+        width: 500px;
         margin: auto;
-    }
-    .formElement {
-        margin-block-end: 1.2em;
-        width: 600px;
     }
 }
