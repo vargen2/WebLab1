@@ -3,6 +3,7 @@ var currentQuestion
 var answers
 var correct = 0
 var current = 0
+var loaded = false
 
 async function createApiUrl(url) {
     let number = url.searchParams.get('n')
@@ -58,9 +59,10 @@ function answerFunc(nr) {
     if (answer === correct_answer) {
         correct++
         document.getElementById('response').innerHTML = 'Correct!'
-        document.getElementById('response').style.color = 'green'
+        document.getElementById('response').style.color = 'rgb(113,233,113)'
     } else {
         document.getElementById('response').innerHTML = 'Wrong!'
+        document.getElementById('response').style.color = 'rgb(233,113,113)'
     }
     current++
     if (current < questions.length)
@@ -81,7 +83,14 @@ function restartSame() {
 }
 
 window.addEventListener('load', () => {
+
+    var loading = setInterval(() => {
+            document.getElementById('question').innerHTML += '.'
+
+    }, 100);
+
     loader().then(r => {
+        clearInterval(loading)
         questions = r
         setQuestion(questions[current])
     })
