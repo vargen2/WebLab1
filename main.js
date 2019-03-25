@@ -3,14 +3,12 @@ var currentQuestion
 var answers
 var correct = 0
 var current = 0
-var loaded = false
 
 async function createApiUrl(url) {
     let number = url.searchParams.get('n')
     number = Math.max(1, Math.min((number) ? number : 10, 50))
 
     let category = url.searchParams.get('c')
-    category = ''
 
     let difficulty = url.searchParams.get('d')
     difficulty = (difficulty) ? difficulty : ''
@@ -29,10 +27,7 @@ function endQuiz() {
     document.getElementById('progressBar').value = questions.length
     document.getElementById('progress').innerHTML = 'Quiz completed'
     document.getElementById('question').innerHTML = correct + ' correct answers out of ' + questions.length
-    document.getElementById('button1').style.display = 'none'
-    document.getElementById('button2').style.display = 'none'
-    document.getElementById('button3').style.display = 'none'
-    document.getElementById('button4').style.display = 'none'
+    document.querySelectorAll('.formElement').forEach(b => b.style.display = 'none')
 }
 
 function setQuestion(question) {
@@ -72,20 +67,15 @@ function answerFunc(nr) {
 }
 
 function restartSame() {
-    document.getElementById('button1').style.display = 'inline-block'
-    document.getElementById('button2').style.display = 'inline-block'
-    document.getElementById('button3').style.display = 'inline-block'
-    document.getElementById('button4').style.display = 'inline-block'
+    document.querySelectorAll('.formElement').forEach(b => b.style.display = 'inline-block')
     current = 0
     correct = 0
-
     setQuestion(questions[current])
 }
 
 window.addEventListener('load', () => {
-
     var loading = setInterval(() => {
-            document.getElementById('question').innerHTML += '.'
+        document.getElementById('question').innerHTML += '.'
 
     }, 100);
 
@@ -93,5 +83,7 @@ window.addEventListener('load', () => {
         clearInterval(loading)
         questions = r
         setQuestion(questions[current])
+    }).catch(err=>{
+        document.getElementById('question').innerHTML='Error ' + err.message
     })
 })
