@@ -3,7 +3,18 @@ var currentQuestion
 var answers
 var correct = 0
 var current = 0
+//ändra till element.classList.toggle('visible')
+//ändra till addEventListener istället för inline
+//ändra fetch till xhr
+// adda quizez till localstorage, spara quiz med poäng, man kan spela om och försöka igen
+var Quiz = function () {
+  this.currentQuestion = 3
+}
 
+var player = new Quiz()
+
+player.correct = 5
+console.log(player)
 async function createApiUrl (url) {
   let number = url.searchParams.get('n')
   number = Math.max(1, Math.min((number) || 10, 50))
