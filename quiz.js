@@ -1,20 +1,7 @@
-var questions
-var currentQuestion
-var answers
+var questions, currentQuestion, answers
 var correct = 0
 var current = 0
-//ändra till element.classList.toggle('visible')
-//ändra till addEventListener istället för inline
-//ändra fetch till xhr
-// adda quizez till localstorage, spara quiz med poäng, man kan spela om och försöka igen
-var Quiz = function () {
-  this.currentQuestion = 3
-}
 
-var player = new Quiz()
-
-player.correct = 5
-console.log(player)
 async function createApiUrl (url) {
   let number = url.searchParams.get('n')
   number = Math.max(1, Math.min((number) || 10, 50))
@@ -27,18 +14,15 @@ async function createApiUrl (url) {
   return 'https://opentdb.com/api.php?amount=' + number + '&type=multiple&category=' + category + '&difficulty=' + difficulty
 }
 
-async function loader () {
-  const apiUrl = await createApiUrl(new URL(window.location.href))
-  const res = await fetch(apiUrl)
-  const json = await res.json()
-  return json.results
+async function parse (response) {
+  return JSON.parse(response).results
 }
 
 function endQuiz () {
   document.getElementById('progressBar').value = questions.length
   document.getElementById('progress').innerHTML = 'Quiz completed'
   document.getElementById('question').innerHTML = correct + ' correct answers out of ' + questions.length
-  document.querySelectorAll('.formElement').forEach(b => { b.style.display = 'none' })
+  document.querySelectorAll('.answerButton').forEach(b => { b.style.display = 'none' })
 }
 
 function setQuestion (question) {
@@ -74,10 +58,18 @@ function answerFunc (nr) {
 }
 
 function restartSame () {
-  document.querySelectorAll('.formElement').forEach(b => { b.style.display = 'inline-block' })
+  document.querySelectorAll('.answerButton').forEach(b => { b.style.display = 'inline-block' })
   current = 0
   correct = 0
   setQuestion(questions[current])
+}
+
+async function initEventListeners () {
+  document.getElementById('button1').addEventListener('click', () => answerFunc(0))
+  document.getElementById('button2').addEventListener('click', () => answerFunc(1))
+  document.getElementById('button3').addEventListener('click', () => answerFunc(2))
+  document.getElementById('button4').addEventListener('click', () => answerFunc(3))
+  document.getElementById('restartSame').addEventListener('click', restartSame)
 }
 
 window.addEventListener('load', () => {
@@ -85,11 +77,26 @@ window.addEventListener('load', () => {
     document.getElementById('question').innerHTML += '.'
   }, 100)
 
-  loader().then(r => {
-    clearInterval(loading)
-    questions = r
-    setQuestion(questions[current])
-  }).catch(err => {
-    document.getElementById('question').innerHTML = 'Error ' + err.message
+  const xhr = new XMLHttpRequest()
+  xhr.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      if (xhr.status === 200) {
+        parse(this.responseText).then(r => {
+          clearInterval(loading)
+          questions = r
+          setQuestion(questions[current])
+        }).then(initEventListeners)
+          .catch(err => {
+            document.getElementById('question').innerHTML = 'Error ' + err.message
+          })
+      } else {
+        // todo add some error message xhr.status
+      }
+    }
+  }
+
+  createApiUrl(new URL(window.location.href)).then(apiUrl => {
+    xhr.open('GET', apiUrl, true)
+    xhr.send()
   })
 })

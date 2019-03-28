@@ -30,18 +30,18 @@
             </div>
         </section>
         <section>
-            <div class="choiceButtons">
-                <button id="button1" class="formElement button" onclick="answerFunc(0)"></button>
-                <button id="button2" class="formElement  button" onclick="answerFunc(1)"></button>
-                <button id="button3" class="formElement  button" onclick="answerFunc(2)"></button>
-                <button id="button4" class="formElement  button" onclick="answerFunc(3)"></button>
+            <div class="answerButtons">
+                <button id="button1" class="answerButton button"></button>
+                <button id="button2" class="answerButton button"></button>
+                <button id="button3" class="answerButton button"></button>
+                <button id="button4" class="answerButton button"></button>
             </div>
         </section>
 
     </main>
     <nav>
         <a href="index.html" title="Start over with new type of quiz" class="navItem">New Quiz</a>
-        <a class="navItem" title="Restart Same Quiz" href="#" onclick="restartSame();return false;">Restart Same</a>
+        <a id="restartSame" class="navItem" title="Restart Same Quiz" href="#">Restart Same</a>
     </nav>
 
 </body>

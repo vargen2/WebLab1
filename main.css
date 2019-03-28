@@ -132,12 +132,12 @@ nav {
     border-width: 0px;
 }
 
-.formElement {
+.answerButton {
     margin-bottom: 1.2em;
     width: 100%;
 }
 
-.choiceButtons {
+.answerButtons {
     height: 13em;
 }
 
