@@ -4,6 +4,6 @@ Interactive Quiz Game. Made for assignment 1 in Web App course at ITHS.
 
 Try it http://vargen2.github.io/WebLab1
 
-Tools and techniques used:
+Tools, techniques and languages used:
     
-    HTML CSS JS AJAX VS-Code Eslint
+    HTML CSS Responsive JS AJAX VS-Code Eslint
