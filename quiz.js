@@ -35,10 +35,10 @@ function setQuestion (question) {
   answers = currentQuestion.incorrect_answers.slice()
   answers.splice(Math.floor(Math.random() * 4), 0, currentQuestion.correct_answer)
 
-  document.getElementById('button1').innerText = answers[0]
-  document.getElementById('button2').innerText = answers[1]
-  document.getElementById('button3').innerText = answers[2]
-  document.getElementById('button4').innerText = answers[3]
+  document.getElementById('button1').innerHTML = answers[0]
+  document.getElementById('button2').innerHTML = answers[1]
+  document.getElementById('button3').innerHTML = answers[2]
+  document.getElementById('button4').innerHTML = answers[3]
 }
 
 function answerFunc (nr) {
