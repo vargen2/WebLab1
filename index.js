@@ -2,8 +2,12 @@
 function loaderXhr () {
   const xhr = new XMLHttpRequest()
   xhr.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-      parse(this.responseText).then(sort).then(populateCategorySelector)
+    if (this.readyState === 4) {
+      if (xhr.status === 200) {
+        parse(this.responseText).then(sort).then(populateCategorySelector)
+      } else {
+        // todo add some error message xhr.status
+      }
     }
   }
 
