@@ -6,7 +6,7 @@ function loaderXhr () {
       if (xhr.status === 200) {
         parse(this.responseText).then(sort).then(populateCategorySelector)
       } else {
-        // todo add some error message xhr.status
+        window.location.href = 'error.html'
       }
     }
   }

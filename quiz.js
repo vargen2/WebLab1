@@ -90,7 +90,7 @@ window.addEventListener('load', () => {
             document.getElementById('question').innerHTML = 'Error ' + err.message
           })
       } else {
-        // todo add some error message xhr.status
+        window.location.href = 'error.html'
       }
     }
   }
