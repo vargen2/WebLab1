@@ -65,7 +65,7 @@ progress::-ms-fill {
     border-width: 0px;
     box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2), 0px 6px 16px 0 rgba(0, 0, 0, 0.2);
     /* box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4); */
-    transition: all 0.2s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
 }
 
 .button:hover {

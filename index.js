@@ -1,7 +1,18 @@
-async function loader () {
-  return fetch('https://opentdb.com/api_category.php')
-    .then(res => res.json())
-    .then(json => json.trivia_categories)
+
+function loaderXhr () {
+  const xhr = new XMLHttpRequest()
+  xhr.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      parse(this.responseText).then(sort).then(populateCategorySelector)
+    }
+  }
+
+  xhr.open('GET', 'https://opentdb.com/api_category.php', true)
+  xhr.send()
+}
+
+async function parse (response) {
+  return JSON.parse(response).trivia_categories
 }
 
 async function sort (categories) {
@@ -26,5 +37,5 @@ async function populateCategorySelector (categories) {
 }
 
 window.addEventListener('load', () => {
-  loader().then(sort).then(populateCategorySelector)
+  loaderXhr()
 })
