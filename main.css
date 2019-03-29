@@ -66,10 +66,6 @@ progress::-ms-fill {
     transition: all 0.1s ease-out 0s;
 }
 
-.button:hover {
-    background-color: rgb(51, 121, 202);
-}
-
 .button:active {
     transform: translate(0px, 4px);
     box-shadow: none;
@@ -150,5 +146,11 @@ nav {
     body {
         width: 500px;
         margin: auto;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .button:hover {
+        background-color: rgb(51, 121, 202);
     }
 }
